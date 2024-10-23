@@ -1,10 +1,8 @@
 package mate.academy.rickandmorty.config;
 
-import org.springframework.beans.factory.annotation.Configurable;
+import java.net.http.HttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.net.http.HttpClient;
 
 @Configuration
 public class HttpClientConfig {
