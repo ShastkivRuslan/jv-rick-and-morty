@@ -11,6 +11,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mate.academy.rickandmorty.dto.external.CreateCharacterDto;
 import mate.academy.rickandmorty.dto.external.ResponseDto;
+import mate.academy.rickandmorty.exception.CharacterNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -48,7 +49,7 @@ public class RickAndMortyClient {
             return objectMapper.readValue(send.body(), ResponseDto.class);
 
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            throw new CharacterNotFoundException("Can t parse JSON file", e);
         }
     }
 
