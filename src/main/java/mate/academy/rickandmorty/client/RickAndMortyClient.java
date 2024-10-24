@@ -52,5 +52,4 @@ public class RickAndMortyClient {
             throw new HttpRequestException("Failed to send https request to url: " + url, e);
         }
     }
-
 }

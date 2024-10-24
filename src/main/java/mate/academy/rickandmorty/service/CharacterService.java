@@ -43,9 +43,8 @@ public class CharacterService {
     }
 
     public List<CharacterDto> searchCharactersByName(String name) {
-        return characterRepository.findAllByNameIsContainingIgnoreCase(name)
-                .stream()
-                .map(characterMapper::toDto)
-                .toList();
+        return characterMapper.toDto(
+                characterRepository.findAllByNameIsContainingIgnoreCase(name)
+        );
     }
 }

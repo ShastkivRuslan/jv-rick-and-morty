@@ -20,16 +20,15 @@ public class CharacterController {
 
     @Operation(summary = "Get a random character",
             description = "Returns a random character from the database.")
-    @GetMapping
+    @GetMapping("/random")
     public CharacterDto getRandomCharacter() {
         return characterService.getRandomCharacter();
     }
 
     @Operation(summary = "Search characters by name",
             description = "Returns a list of characters matching the given name.")
-    @GetMapping("/search")
+    @GetMapping()
     public List<CharacterDto> searchCharacters(@RequestParam String name) {
         return characterService.searchCharactersByName(name);
     }
-
 }
