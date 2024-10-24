@@ -11,7 +11,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mate.academy.rickandmorty.dto.external.CreateCharacterDto;
 import mate.academy.rickandmorty.dto.external.ResponseDto;
-import mate.academy.rickandmorty.exception.CharacterNotFoundException;
+import mate.academy.rickandmorty.exception.HttpRequestException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,14 +24,14 @@ public class RickAndMortyClient {
 
     public List<CreateCharacterDto> getAllCharactersFromApi() {
         List<CreateCharacterDto> characters = new ArrayList<>();
-        String url = BASE_URL;
+        String pageUrl = BASE_URL;
 
         ResponseDto response;
         do {
-            response = getPageWithCharacters(url);
+            response = getPageWithCharacters(pageUrl);
             characters.addAll(response.characters());
-            url = response.info().next();
-        } while (url != null);
+            pageUrl = response.info().next();
+        } while (pageUrl != null);
 
         return characters;
     }
@@ -49,7 +49,7 @@ public class RickAndMortyClient {
             return objectMapper.readValue(send.body(), ResponseDto.class);
 
         } catch (IOException | InterruptedException e) {
-            throw new CharacterNotFoundException("Can t parse JSON file", e);
+            throw new HttpRequestException("Failed to send https request to url: " + url, e);
         }
     }
 

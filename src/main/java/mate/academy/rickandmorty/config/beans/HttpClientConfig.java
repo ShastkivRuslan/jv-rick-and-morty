@@ -1,4 +1,4 @@
-package mate.academy.rickandmorty.config;
+package mate.academy.rickandmorty.config.beans;
 
 import java.net.http.HttpClient;
 import org.springframework.context.annotation.Bean;

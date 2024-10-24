@@ -1,4 +1,4 @@
-package mate.academy.rickandmorty.config;
+package mate.academy.rickandmorty.config.beans;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
